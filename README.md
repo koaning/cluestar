@@ -16,9 +16,9 @@ python -m pip install "cluestar @ git+https://github.com/koaning/cluestar.git"
 ```
 ## Interactive Demo
 
-You can see an interactive demo of the generated widgets [here]().
+You can see an interactive demo of the generated widgets [here](https://koaning.github.io/cluestar/).
 
-You can also toy around with the demo notebook found [here]().
+You can also toy around with the demo notebook found [here](https://github.com/koaning/cluestar/blob/main/notebooks/overview.ipynb).
 ## Usage
 
 The first step is to encode textdata in two dimensions, like below.
