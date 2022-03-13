@@ -46,3 +46,9 @@ The best results are likely found when you use
 together with something like
 [universal sentence encoder](https://koaning.github.io/whatlies/api/language/universal_sentence/).
 
+You might also improve the understandability by highlighting points
+that have a certain word in it.
+
+```python
+plot_text(X, texts, color_words=["plastic", "voucher", "deliver"])
+```
