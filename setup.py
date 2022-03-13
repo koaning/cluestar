@@ -2,13 +2,17 @@ import pathlib
 from setuptools import setup, find_packages
 
 
-base_packages = ["altair>=4.0.1"]
+base_packages = ["altair>=4.0.1", "numpy>=1.19.2"]
 
 dev_packages = base_packages + [
     "pytest>=4.0.2",
     "black>=19.3b0",
     "pytest-cov>=2.6.1",
     "pre-commit>=2.2.0",
+    "tensorflow==2.4.4",
+    "whatlies[tfhub]",
+    "umap-learn",
+    "jupyterlab",
 ]
 
 
