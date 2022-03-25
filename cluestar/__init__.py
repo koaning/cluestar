@@ -3,7 +3,7 @@ import pandas as pd
 import altair as alt
 
 
-def plot_text(X, texts, color_words=None, disable_warning=True):
+def plot_text(X, texts, color_array=None, color_words=None, disable_warning=True):
     """
     Make a visualisation to help find clues in text data.
 
@@ -24,6 +24,13 @@ def plot_text(X, texts, color_words=None, disable_warning=True):
     df_ = pd.DataFrame({"x1": X[:, 0], "x2": X[:, 1], "text": texts}).assign(
         trunc_text=lambda d: d["text"].str[:120], r=0
     )
+
+    if color_array is not None:
+        if len(color_array) != X.shape[0]:
+            raise ValueError(
+                f"The number of color array ({len(color_array)}) should match X array ({X.shape[0]})."
+            )
+        df_ = df_.assign(color=color_array)
 
     if color_words:
         df_ = df_.assign(color="none")
@@ -55,6 +62,20 @@ def plot_text(X, texts, color_words=None, disable_warning=True):
                 y=alt.Y("x2", axis=None, scale=alt.Scale(zero=False)),
                 tooltip=["text"],
                 color=alt.Color("color", sort=["none"] + color_words),
+            )
+            .properties(width=350, height=350, title="embedding space")
+            .add_selection(brush)
+        )
+
+    if color_array is not None:
+        p1 = (
+            alt.Chart(df_)
+            .mark_circle(opacity=0.6, size=20)
+            .encode(
+                x=alt.X("x1", axis=None, scale=alt.Scale(zero=False)),
+                y=alt.Y("x2", axis=None, scale=alt.Scale(zero=False)),
+                tooltip=["text"],
+                color=alt.Color("color"),
             )
             .properties(width=350, height=350, title="embedding space")
             .add_selection(brush)
