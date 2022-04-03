@@ -52,3 +52,13 @@ that have a certain word in it.
 ```python
 plot_text(X, texts, color_words=["plastic", "voucher", "deliver"])
 ```
+
+You can also use a numeric array, one that contains proba-values for prediction,
+to influence the color.
+
+```python
+# First, get an array of pvals from some model
+p_vals = some_model.predict(texts)[:, 0]
+# Use these to assign pretty colors.
+plot_text(X, texts, color_array=p_vals)
+```
