@@ -28,7 +28,7 @@ from sklearn.pipeline import make_pipeline
 from sklearn.decomposition import TruncatedSVD
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-pipe = make_pipeline(TfidfVectorizer(), TruncatedSVD())
+pipe = make_pipeline(TfidfVectorizer(), TruncatedSVD(n_components=2))
 
 X = pipe.fit_transform(texts)
 ```
