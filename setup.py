@@ -9,8 +9,6 @@ dev_packages = base_packages + [
     "black>=19.3b0",
     "pytest-cov>=2.6.1",
     "pre-commit>=2.2.0",
-    "tensorflow==2.4.4",
-    "whatlies[tfhub]",
     "umap-learn",
     "jupyterlab",
 ]
@@ -38,6 +36,7 @@ setup(
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
         "License :: OSI Approved :: MIT License",
         "Topic :: Scientific/Engineering",
         "Topic :: Scientific/Engineering :: Artificial Intelligence",
