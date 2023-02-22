@@ -12,10 +12,11 @@ good labels for your dataset might be!
 It generates charts that looks like this:
 
 ![](gif.gif)
+
 ## Install
 
 ```
-python -m pip install "cluestar @ git+https://github.com/koaning/cluestar.git"
+python -m pip install cluestar
 ```
 ## Interactive Demo
 
