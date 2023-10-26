@@ -119,9 +119,9 @@ def plot_text_comparison(X1, X2, texts, disable_warning=True):
     Make a visualisation to help find clues in text data.
 
     Arguments:
-        - `X`: the numeric features, should be a 2D numpy array
+        - `X1`: the numeric features, should be a 2D numpy array
+        - `X2`: the numeric features, should be a 2D numpy array
         - `texts`: list of text data
-        - `color_words`: list of words to highlight
         - `disable_warning`: disable the standard altair max rows warning
     """
     if disable_warning:
