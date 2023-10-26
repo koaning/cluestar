@@ -18,6 +18,7 @@ It generates charts that looks like this:
 ```
 python -m pip install cluestar
 ```
+
 ## Interactive Demo
 
 You can see an interactive demo of the generated widgets [here](https://koaning.github.io/cluestar/).
