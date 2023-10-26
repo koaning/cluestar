@@ -11,11 +11,15 @@ good labels for your dataset might be!
 
 It generates charts that looks like this:
 
-![](gif.gif)
+![Normal plot](gif.gif)
+
+There's even a fancy chart that can compare embedding techniques.
+
+![Comparing two embeddings](gif-multi.gif)
 
 ## Install
 
-```
+```text
 python -m pip install cluestar
 ```
 
@@ -24,6 +28,7 @@ python -m pip install cluestar
 You can see an interactive demo of the generated widgets [here](https://koaning.github.io/cluestar/).
 
 You can also toy around with the demo notebook found [here](https://github.com/koaning/cluestar/blob/main/notebooks/overview.ipynb).
+
 ## Usage
 
 The first step is to encode textdata in two dimensions, like below.
@@ -66,4 +71,12 @@ to influence the color.
 p_vals = some_model.predict(texts)[:, 0]
 # Use these to assign pretty colors.
 plot_text(X, texts, color_array=p_vals)
+```
+
+You can also compare two embeddings interactively. To do this: 
+
+```python
+from cluestar import plot_text_comparison
+
+plot_text(X1=X, X2=X, texts)
 ```

@@ -11,6 +11,7 @@ def plot_text(X, texts, color_array=None, color_words=None, disable_warning=True
         - `X`: the numeric features, should be a 2D numpy array
         - `texts`: list of text data
         - `color_words`: list of words to highlight
+        - `color_array`: an array that represents color for the plot
         - `disable_warning`: disable the standard altair max rows warning
     """
     if disable_warning:
