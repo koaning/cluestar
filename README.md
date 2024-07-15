@@ -1,6 +1,6 @@
 <img src="cluestar.png" width=175 align="right">
 
-# cluestar
+### cluestar
 
 > Gain a clue by clustering!
 
