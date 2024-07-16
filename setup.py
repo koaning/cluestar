@@ -15,7 +15,7 @@ dev_packages = base_packages + [
 
 setup(
     name="cluestar",
-    version="0.2.0",
+    version="0.2.1",
     author="Vincent D. Warmerdam",
     packages=find_packages(exclude=["notebooks", "docs"]),
     description="Gain a clue by clustering!",
