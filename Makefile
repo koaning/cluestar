@@ -1,8 +1,8 @@
 black:
-	black --target-version py38 cluestar tests setup.py
+	black --target-version py310 cluestar tests
 
 flake:
-	flake8 cluestar tests setup.py
+	flake8 cluestar tests
 
 install:
 	python -m pip install --upgrade pip
@@ -13,8 +13,8 @@ interrogate:
 	interrogate -vv --ignore-nested-functions --ignore-semiprivate --ignore-private --ignore-magic --ignore-module --ignore-init-method --fail-under 100 cluestar
 
 pypi:
-	python setup.py sdist
-	python setup.py bdist_wheel --universal
+	python -m pip install --upgrade build twine
+	python -m build
 	twine upload dist/*
 
 clean:

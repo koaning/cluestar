@@ -56,6 +56,18 @@ The best results are likely found when you use
 together with something like
 [universal sentence encoder](https://koaning.github.io/whatlies/api/language/universal_sentence/).
 
+Drag a rectangle over the scatter plot to select points. The panels on the right
+update as you drag:
+
+- **"293 of 2,000 selected"**: how many points are in your selection.
+- **text**: the first few texts in the selection (hover a point to see its full text).
+- **top words**: the words that appear in the most selected texts, ignoring common filler
+  words, URLs and @mentions. Use `top_words=0` to hide this panel.
+
+Double-click the scatter plot to clear the selection.
+
+### Coloring points
+
 You might also improve the understandability by highlighting points
 that have a certain word in it.
 
@@ -63,20 +75,58 @@ that have a certain word in it.
 plot_text(X, texts, color_words=["plastic", "voucher", "deliver"])
 ```
 
-You can also use a numeric array, one that contains proba-values for prediction,
-to influence the color.
+You can also color by an array. Floats, like predicted probabilities, get a color scale.
 
 ```python
-# First, get an array of pvals from some model
-p_vals = some_model.predict(texts)[:, 0]
-# Use these to assign pretty colors.
+# First, get an array of probabilities from some model
+p_vals = some_model.predict_proba(texts)[:, 0]
 plot_text(X, texts, color_array=p_vals)
 ```
 
-You can also compare two embeddings interactively. To do this: 
+Anything else, like cluster ids, labels you already have or booleans, is treated as
+categories. **Click a category in the legend** to show only that group; the count, text
+and top words panels then only describe that group.
+
+```python
+from sklearn.cluster import KMeans
+
+clusters = KMeans(n_clusters=5).fit_predict(X)
+plot_text(X, texts, color_array=clusters)
+```
+
+### Getting your selection back into Python
+
+Found an interesting cluster? Use `widget=True` and you can pull the selected rows
+straight into your notebook, for example to label them or to export them.
+This needs one extra package:
+
+```text
+python -m pip install "cluestar[widget]"
+```
+
+```python
+widget = plot_text(X, texts, color_array=clusters, widget=True)
+widget  # display it, then drag a rectangle and/or click the legend
+```
+
+```python
+selected = widget.selected()  # a DataFrame with the text, coordinates and color
+selected.index                # positions in `texts`, so df.iloc[selected.index] gets your original rows
+```
+
+`widget.selected()` always reflects the current selection, so you can select, run the
+cell, select something else and run it again.
+
+### Comparing two embeddings
+
+You can also compare two embeddings interactively. Selecting points in one
+chart highlights the same texts in the other.
 
 ```python
 from cluestar import plot_text_comparison
 
-plot_text(X1=X, X2=X, texts)
+plot_text_comparison(X1, X2, texts)
 ```
+
+`plot_text_comparison` takes the same `color_array`, `color_words`, `top_words` and
+`widget` arguments as `plot_text`.

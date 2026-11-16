@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cluestar"
+version = "0.3.0"
+description = "Gain a clue by clustering!"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Vincent D. Warmerdam" }]
+requires-python = ">=3.10"
+dependencies = [
+    "altair>=5.1.0",
+    "numpy>=1.21",
+    "pandas>=1.5",
+]
+classifiers = [
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+[project.optional-dependencies]
+widget = ["anywidget>=0.9"]
+dev = [
+    "anywidget>=0.9",
+    "pytest>=7",
+    "pytest-cov",
+    "black",
+    "flake8",
+    "pre-commit",
+    "jupyterlab",
+]
+
+[project.urls]
+Documentation = "https://github.com/koaning/cluestar/"
+"Source Code" = "https://github.com/koaning/cluestar/"
+"Issue Tracker" = "https://github.com/koaning/cluestar/issues"
+
+[tool.setuptools.packages.find]
+include = ["cluestar*"]
